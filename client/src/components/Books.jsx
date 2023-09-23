@@ -36,7 +36,7 @@ const Books = () => {
     return (
         <div>
       
-            <h1>BOOKS TRACKER  <button> 
+            <h1>BOOK TRACKER  <button className="btn"> 
         <Link to={"/add"}>Add new book </Link>
         </button></h1>
 
@@ -49,8 +49,8 @@ const Books = () => {
                 <p>{book.desc}</p>
                 <span>{book.price}</span>
                 <div className="button">
-                <button className="update"><Link to={`/update/${book.id}`}> Update</Link></button>
-                <button className="delete" onClick={() => handleDelete(book.id)}>Delete</button>
+                <button className="btn"><Link to={`/update/${book.id}`}> Update</Link></button>
+                <button className="btn" onClick={() => handleDelete(book.id)}>Delete</button>
                 </div>
             </div>
             ))}

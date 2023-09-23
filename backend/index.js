@@ -48,7 +48,7 @@ app.post("/books", (req, res) => {
         req.body.cover,
     ]
 
-    db.query(query, [...values, bookId], (err, data) => {
+    db.query(query, [values], (err, data) => {
         if(err) {
             return res.json(err)
         }else {
