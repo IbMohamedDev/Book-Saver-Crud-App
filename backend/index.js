@@ -48,7 +48,7 @@ app.post("/books", (req, res) => {
         req.body.cover,
     ]
 
-    db.query(query, [values], (err, data) => {
+    db.query(query, [...values, bookId], (err, data) => {
         if(err) {
             return res.json(err)
         }else {
@@ -57,6 +57,41 @@ app.post("/books", (req, res) => {
     })
 })
 
+app.delete("/books/:id", (req, res)=> {
+    const bookId = req.params.id;
+    const query = "DELETE FROM books WHERE id = ?"
+
+    db.query(query, [bookId], (err, data) => {
+        if(err){
+            return res.json(err)
+        } else {
+            return res.json("Book has been deleted")
+        }
+    })
+
+})
+
+
+app.put("/books/:id", (req, res)=> {
+    const bookId = req.params.id;
+    const query = "UPDATE books SET `title`= ?, `desc`= ?, `price`= ?, `cover`= ? WHERE id = ?"
+
+
+    const values = [
+        req.body.title,
+        req.body.desc,
+        req.body.price,
+        req.body.cover,
+]
+    db.query(query, [...values, bookId], (err, data) => {
+        if(err){
+            return res.json(err)
+        } else {
+            return res.json("Book has been updated")
+        }
+    })
+
+})
 
 app.listen(8000, () => {
     console.log(`Connected on port ${PORT}` )

@@ -21,28 +21,41 @@ const Books = () => {
     }, [])
 
 
-    
+        let booksRev = books.toReversed()
+
+    const handleDelete = async(id) => {
+        try{
+            await axios.delete("http://localhost:8000/books/"+id);
+            window.location.reload()
+        } catch(err){
+            console.log(err)
+        }
+    }
+
+
     return (
         <div>
       
-            <h1>BOOKS.COM</h1>
+            <h1>BOOKS TRACKER  <button> 
+        <Link to={"/add"}>Add new book </Link>
+        </button></h1>
+
+           
             <div className="books">
-            {books.map(book => ( 
+            {booksRev.map(book => ( 
             <div className="book" key={book.id}> 
                 {book.cover && <img src={book.cover} alt=""></img>}
                 <h2>{book.title}</h2>
                 <p>{book.desc}</p>
                 <span>{book.price}</span>
                 <div className="button">
-                <button className="update">Update</button>
-                <button className="delete">Delete</button>
+                <button className="update"><Link to={`/update/${book.id}`}> Update</Link></button>
+                <button className="delete" onClick={() => handleDelete(book.id)}>Delete</button>
                 </div>
             </div>
             ))}
         </div>
-        <button> 
-        <Link to={"/add"}>Add new book </Link>
-        </button>
+    
        </div> 
     )
 }
