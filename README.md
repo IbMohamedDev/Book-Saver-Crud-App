@@ -3,7 +3,9 @@
 This is a simple CRUD application using React, NodeJS and MySQL.
 The application tracks the books a user has read.
 
-<img width="1314" alt="Screenshot 2023-09-23 at 6 19 22 PM" src="https://github.com/IbMohamedDev/Book-Saver-Crud-App/assets/145039001/56bd0fb3-b8f6-4eaa-9c77-3a8c325965ea">
+
+<img width="1219" alt="Screenshot 2023-09-23 at 6 31 05 PM" src="https://github.com/IbMohamedDev/Book-Saver-Crud-App/assets/145039001/657729fd-85ec-4fb6-a10f-28e0a88b92ec">
+
 
 
 You can add new books 
